@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>  
+<style type="text/css">
+   body {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+.a {
+  background-color: lightgrey;
+  width: 80%;
+  border: 8px black;
+  padding: 30px;
+  margin:0 auto;
+}
+
+.b{
+   background-color: lightgrey;
+  width: 80%;
+  border: 5px solid black;
+  margin:0 auto;
+  
+}
+
+.c{
+   padding: 30px;
+}
+</style>
+   <body>  
+      <div class="a"> <center><h1 style="font-size:60px;">Sentiment Analysis</h1></center>  </div>
+      <!-- <form action = "https://sentiment-predictions.herokuapp.com//success" method = "POST"> -->
+         <div class = "b">
+            <form action = "https://sentiment-predictions.herokuapp.com//success" method = "POST">
+         <!-- <form action = "http://localhost:5000/success" method = "POST"> -->
+            <center>
+         <p style="font-size:20px;">Enter your sentence: <input type = "text" name = "name" required size="60" style="font-size:20px;"/></p>  
+         <!-- <p>Email <input type = "email" name = "email" /></p>  
+         <p>Contact <input type = "text" name = "contact" /></p>  
+         <p>Pin code <input type ="text" name = "pin" /></p>  --> 
+         
+         
+         <p><input type = "submit" value = "Submit" style="background-color: #4CAF50;color: white;padding: 0.8% 2%; font-size: 16px;"/></p> </center></div>
+         <!-- <div><img src="sentiment-analysis.png" alt="Trulli" width="500" height="333"> -->
+         <div class = "c" style="font-size:30px;"><!-- <center><img src="{{ url_for('static', filename = 'sentiment-analysis.png') }}" alt="User Image" width="500" height="333"> -->
+            <center>
+            {% if "Sentiment: Negative sentence" in result %}
+            <!-- {% set row_class = "good" %} -->
+            <div><label>Input sentence: </label>{{input}}<br>{{result}}</div>
+            <div><img src="{{ url_for('static', filename = 'neg.PNG') }}" alt="User Image" width="250" height="250"></div>
+
+            {% elif "Sentiment: Neutral sentence" in result %}
+             <div><label>Input sentence: </label>{{input}}<br>{{result}}</div>
+            <div><img src="{{ url_for('static', filename = 'neu.PNG') }}" alt="User Image" width="250" height="250"></div>
+
+            {% else %}
+              <div><label>Input sentence: </label>{{input}}<br>{{result}}</div>
+            <div><img src="{{ url_for('static', filename = 'pos.PNG') }}" alt="User Image" width="250" height="250"></div>
+
+            {% endif %}
+
+
+         </center>
+         </div>
+      </form>  
+   </body>  
+</html>
